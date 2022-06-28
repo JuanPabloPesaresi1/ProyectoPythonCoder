@@ -4,9 +4,10 @@ from .views import *
 
 
 urlpatterns = [
-    
-    path("",index),
-    path('profesores/',profesores),
-    path('estudiantes/',estudiantes),
-    path('cursos/',cursos),    
+    #URLS
+    path("",index, name="inicio"),
+    path('peliculas/',peliculas, name="peliculas"),
+    path('asientos/',asientos, name="asientos"),
+    path('contacto/',contacto, name="contacto"),
+    # path('base/',base),     
 ]

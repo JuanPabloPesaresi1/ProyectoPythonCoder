@@ -2,11 +2,13 @@
 {% load static %}
 
 {% block tituloPaginas %}  
-Inicio
+Asientos
 {% endblock%}
 
 {% block contenidoPagina %}
-<h1 style="text-align: center;color:red">Contenido de inicio</h1>
+
+<h1 style="text-align: center;color:red">Contenido de Asientos </h1>
+
 <section>
     <div style="display: flex;justify-content:center;">
         <table>
@@ -16,17 +18,16 @@ Inicio
                 <th>Fecha</th>
                 <th>Email</th>
             </thead>
-            
-            {% for familiar in familia %}
+            {% for personas in familiar %}
             <tr>
-                <td>{{familiar.nombre}}</td>
-                <td>{{familiar.apellido}}</td>
-                <td>{{familiar.fechaDeNacimiento}}</td>
-                <td>{{familiar.email}}</td>
+                <td>{{personas.nombre}}</td>
+                <td>{{personas.apellido}}</td>
+                <td>{{personas.fechaDeNacimiento}}</td>
+                <td>{{personas.email}}</td>
             </tr>
-    </div>    
             {% endfor %}
         </table>
-    </section>
+    </div>    
+</section>
 
 {% endblock %}

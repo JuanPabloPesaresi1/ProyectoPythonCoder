@@ -23,17 +23,20 @@ def index(request):
     
     return render(request,"index.html",ctx)
 
-def estudiantes(request):
+def asientos(request):
     
     personas=Familiares.objects.all()
     
-    return render(request,"estudiantes.html",{"nombre":personas})
+    return render(request,"asientos.html",{"nombre":personas})
 
-def profesores(request):
-    return render(request,"profesores.html")
+def peliculas(request):
+    return render(request,"peliculas.html")
 
-def cursos(request):
+def contacto(request):
     
     personas=Familiares.objects.all()
     
-    return render(request,"cursos.html",{"nombre":personas})
+    return render(request,"contacto.html",{"nombre":personas})
+
+def base(request):
+    return render(request,"base.html")
