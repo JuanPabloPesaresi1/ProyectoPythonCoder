@@ -7,7 +7,7 @@ from AppCoder.models import *
 # Create your views here.
 
 def index(request):
-    
+        
     nombre="juan"
     apellido="pesaresi"
     fecha="2001"
@@ -21,4 +21,19 @@ def index(request):
     
     ctx={"familia":personas}
     
-    return render(request,"index2.html",ctx)
+    return render(request,"index.html",ctx)
+
+def estudiantes(request):
+    
+    personas=Familiares.objects.all()
+    
+    return render(request,"estudiantes.html",{"nombre":personas})
+
+def profesores(request):
+    return render(request,"profesores.html")
+
+def cursos(request):
+    
+    personas=Familiares.objects.all()
+    
+    return render(request,"cursos.html",{"nombre":personas})
