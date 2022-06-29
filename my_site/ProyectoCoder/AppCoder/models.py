@@ -17,7 +17,7 @@ class Familiares(models.Model):
     
 class Peliculas(models.Model):
     
-    nombre=models.CharField(max_length=40)
+    nombrePelicula=models.CharField(max_length=40)
     genero=models.CharField(max_length=15)
     anioDeLanzamiento=models.IntegerField()
     

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block tituloPaginas %}  
+Formulario Butacas
+{% endblock%}
+
+{% block contenidoPagina %}
+
+<h1 style="text-align: center;color:red">Contenido de los asientos</h1>
+<h3 style="text-align:center;margin-top:1%;">Formulario Asientos</h3>
+
+<form style="text-align: center;width:100%;" action="" method="post">
+    {% csrf_token %}
+
+    <p>Nombre : <input type="text" name="nombreReserva" max_length="30"  ></p>
+
+    <p>Fila : <input type="number" name="fila" ></p>
+
+    <p>Asiento : <input type="number" name="asiento" id=""></p>
+
+    <input style="background-color:green" type="submit" value="Reservar asiento">
+</form>
+{% endblock %}

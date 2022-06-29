@@ -9,4 +9,29 @@ Peliculas
 
 <h1 style="text-align: center;color:red">Contenido de Peliculas </h1>
 
+<section>
+    <div style="display: flex;justify-content:center;">
+        <table>
+            <thead style="padding: 50px;">
+                <th>Nombre</th>
+                <th>Genero</th>
+                <th>Año</th>
+            </thead>
+            
+            {% for pelis in peliculas %}
+            <tr>
+                <td>{{pelis.nombrePelicula}}</td>
+                <td>{{pelis.genero}}</td>
+                <td>{{pelis.anioDeLanzamiento}}</td>
+                
+            </tr>
+    </div>    
+            {% endfor %}
+        </table>
+        
+</section>
+<div style="text-align:center ;">
+<a style="text-decoration: none" href="{% url 'formulario_peliculas' %}">+ Añadir Pelicula</a>
+</div>
+
 {% endblock %}

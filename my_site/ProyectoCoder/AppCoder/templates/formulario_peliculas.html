@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block tituloPaginas %}  
+Formulario de Peliculas
+{% endblock%}
+
+{% block contenidoPagina %}
+
+<h1 style="text-align: center;color:red">Contenido del formulario</h1>
+<h3 style="text-align:center;margin-top:1%;">Formulario Peliculas</h3>
+
+<form style="text-align: center;width:100%;" action="" method="post">
+    {% csrf_token %}
+
+    <p>Pelicula : <input type="text" name="nombrePelicula" max_length="40"  ></p>
+
+    <p>Genero : <input type="text" name="genero" maxlength="15" ></p>
+
+    <p>Año : <input type="number" name="anioDeLanzamiento" id="" min="2017"></p>
+
+    <input style="background-color:green" type="submit" value="Crear Pelicula">
+</form>
+{% endblock %}

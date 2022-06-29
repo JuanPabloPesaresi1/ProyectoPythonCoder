@@ -10,24 +10,29 @@ Asientos
 <h1 style="text-align: center;color:red">Contenido de Asientos </h1>
 
 <section>
-    <div style="display: flex;justify-content:center;">
-        <table>
-            <thead>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Fecha</th>
-                <th>Email</th>
-            </thead>
-            {% for personas in familiar %}
-            <tr>
-                <td>{{personas.nombre}}</td>
-                <td>{{personas.apellido}}</td>
-                <td>{{personas.fechaDeNacimiento}}</td>
-                <td>{{personas.email}}</td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div>    
-</section>
+        <div style="display: flex;justify-content:center;">
+            <table>
+                <thead style="padding: 50px;">
+                    <th>Nombre</th>
+                    <th>Fila</th>
+                    <th>Asiento</th>
+                </thead>
+                
+                {% for butacas in asientos %}
+                <tr>
+                    <td>{{butacas.nombreReserva}}</td>
+                    <td>{{butacas.fila}}</td>
+                    <td>{{butacas.asiento}}</td>
+                    
+                </tr>
+        </div>    
+                {% endfor %}
+            </table>
+            
+    </section>
+<div style="text-align:center ;">
+<a style="text-decoration: none" href="{% url 'formulario_butacas' %}">+ Añadir Asiento</a>
+</div>
+
 
 {% endblock %}

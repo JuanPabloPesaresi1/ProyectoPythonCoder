@@ -24,9 +24,15 @@ Inicio
                 <td>{{familiar.fechaDeNacimiento}}</td>
                 <td>{{familiar.email}}</td>
             </tr>
+            
     </div>    
             {% endfor %}
+            
         </table>
-    </section>
+        
+</section>
+<div style="text-align:center ;">
+    <a style="text-decoration: none" href="{% url 'formulario_personas' %}">+ Añadir Personas</a>
+</div>
 
 {% endblock %}

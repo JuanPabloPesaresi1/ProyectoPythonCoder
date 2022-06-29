@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block tituloPaginas %}  
+Formulario Personas
+{% endblock%}
+
+{% block contenidoPagina %}
+<h1 style="text-align: center;color:red">Contenido de personas</h1>
+<h3 style="text-align:center;margin-top:1%;">Formulario Personas</h3>
+<section>
+    <form style="text-align: center;width:100%;" action="" method="post">
+        {% csrf_token %}
+    
+        <p>Nombre : <input type="text" name="nombre" max_length="30"  ></p>
+    
+        <p>Apellido : <input type="text" name="apellido" ></p>
+    
+        <p>Año : <input type="number" name="fechaDeNacimiento" id=""></p>
+
+        <p>Mail : <input type="email" name="email" id=""></p>
+    
+        <input style="background-color:green" type="submit" value="Agregar Persona">
+    </form>
+    </section>
+
+{% endblock %}
