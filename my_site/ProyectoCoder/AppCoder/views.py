@@ -1,8 +1,12 @@
 import email
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse
 from django.template import Context, Template
 from AppCoder.models import *
+from django.db.models import Q
+from .forms import formularioPeliculas
+from django.forms.models import inlineformset_factory
+from django.db.models import DEFERRED
 
 # Create your views here.
 
@@ -83,7 +87,6 @@ def busqueda_pelicula(request):
         return render(request,"busqueda_pelicula.html",{"peliculas":peliculasBusqueda})
 
 def formulario_personas(request):
-    
     if request.method == "POST":
         
         info_formulario = request.POST
@@ -95,3 +98,36 @@ def formulario_personas(request):
         return redirect("inicio")
     
     return render(request,"formulario_personas.html")
+
+def eliminar_peliculas(request, pk):
+    
+    pelicula= get_object_or_404(Peliculas, id=pk)
+    pelicula.delete()
+    
+    return redirect('peliculas')
+    
+def modificar_peliculas(request,pk):
+    
+    peliculas = Peliculas.objects.get(id=pk)
+
+    if request.method == "POST":
+
+        formulario = formularioPeliculas(request.POST)
+
+        if formulario.is_valid():
+            
+            info_peliculas = formulario.cleaned_data
+            
+            peliculas.nombrePelicula = info_peliculas["nombrePelicula"]
+            peliculas.genero = info_peliculas["genero"]
+            peliculas.anioDeLanzamiento = info_peliculas["anioDeLanzamiento"]
+            peliculas.save()
+
+            return redirect("peliculas")
+
+    # get
+    formulario = formularioPeliculas(initial={"nombrePelicula":peliculas.nombrePelicula, "genero":peliculas.genero, "anioDeLanzamiento": peliculas.anioDeLanzamiento})
+    
+    return render(request,"modificar_peliculas.html",{"form":formulario})
+
+

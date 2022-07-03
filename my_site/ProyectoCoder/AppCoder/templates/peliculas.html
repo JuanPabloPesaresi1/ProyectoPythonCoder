@@ -7,15 +7,25 @@ Peliculas
 
 {% block contenidoPagina %}
 
-<h1 style="text-align: center;color:red">Contenido de Peliculas </h1>
+<h1 style="text-align: center;color:red">Catalogo</h1>
 
 <section>
+
+<style>
+    tr:nth-child(even){background-color: #f2f2f2;}
+    tr:hover {background-color: #ddd;}
+    th{border: 1px solid #ddd;padding: 8px;padding-top: 12px;padding-bottom: 12px;text-align: center;background-color: #04AA6D;color: white;}
+    td{border: 1px solid #ddd;padding: 8px;text-align: center;}
+    .a{background-color: #04AA6D;border:none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;cursor: pointer;}
+</style>
     <div style="display: flex;justify-content:center;">
-        <table>
-            <thead style="padding: 50px;">
+        <table style="font-family: Arial, Helvetica, sans-serif;border-collapse: collapse;width: 30%;">
+            <thead>
                 <th>Nombre</th>
                 <th>Genero</th>
                 <th>Año</th>
+                <th>Borrar</th>
+                <th>Editar</th>
             </thead>
             
             {% for pelis in peliculas %}
@@ -23,15 +33,16 @@ Peliculas
                 <td>{{pelis.nombrePelicula}}</td>
                 <td>{{pelis.genero}}</td>
                 <td>{{pelis.anioDeLanzamiento}}</td>
-                
+                <td><a style="color:red;font-size:13px;" href="{% url 'eliminar_peliculas' pelis.id %}" class="text-danger badge badge-danger text-decoration-none"> <i class="bi bi-trash"></i> Eliminar</a></td>
+                <td><a style="text-decoration:none;font-size:13px;" href="{% url 'modificar_peliculas' pelis.id %}" > <i class="bi bi-brush-fill"></i> Editar</a></td>
             </tr>
     </div>    
             {% endfor %}
         </table>
         
 </section>
-<div style="text-align:center ;">
-<a style="text-decoration: none" href="{% url 'formulario_peliculas' %}">+ Añadir Pelicula</a>
+<div style="text-align:center ;margin-top:1%;">
+<a class="a" href="{% url 'formulario_peliculas' %}">Añadir Pelicula</a>
 </div>
 
 {% endblock %}

@@ -7,18 +7,68 @@ Formulario de Peliculas
 
 {% block contenidoPagina %}
 
+<style>
+
+    input[type=text],[type=number], select {
+        width: 30%;
+        padding: 12px 5px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    input[type=submit]{
+        width: 30%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    input[type=submit]:hover [type=number]:hover{
+        background-color: #45a049;
+    }
+    div.contenido {
+        border-radius: 5px;
+        padding: 20px;
+    }
+</style>
+
 <h1 style="text-align: center;color:red">Contenido del formulario</h1>
 <h3 style="text-align:center;margin-top:1%;">Formulario Peliculas</h3>
 
-<form style="text-align: center;width:100%;" action="" method="post">
-    {% csrf_token %}
+<div class="contenido">
+    <form style="text-align: center;width:100%;" action="" method="post">
+        {% csrf_token %}
 
-    <p>Pelicula : <input type="text" name="nombrePelicula" max_length="40"  ></p>
+        <p>Pelicula <input type="text" name="nombrePelicula" max_length="40" ></p>
 
-    <p>Genero : <input type="text" name="genero" maxlength="15" ></p>
-
-    <p>Año : <input type="number" name="anioDeLanzamiento" id="" min="2017"></p>
-
-    <input style="background-color:green" type="submit" value="Crear Pelicula">
-</form>
+        <p>Genero 
+            <select name="genero">
+                <option>Terror</option>
+                <option>Accion</option>
+                <option>Comedia</option>
+                <option>Drama</option>
+                <option>Suspenso</option>
+                <option>Magia</option>
+                <option>Infantil</option>
+            </select>
+        </p>
+        <p> Lanzam
+            <select name="anioDeLanzamiento">
+                <option>2017</option>
+                <option>2018</option>
+                <option>2019</option>
+                <option>2020</option>
+                <option>2021</option>
+                <option>2022</option>
+            </select>
+        </p>
+        
+        <input style="background-color:green" type="submit" value="Crear Pelicula">
+    </form>
+</div>
 {% endblock %}
