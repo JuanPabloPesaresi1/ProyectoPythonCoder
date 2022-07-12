@@ -9,7 +9,7 @@
         <meta name="author" content="" />
         <title>{% block tituloPaginas %}  {% endblock%}</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/cineya.png' %}" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -17,21 +17,27 @@
     </head>
     <body>
         <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg py-1 bg-dark ">
             <div class="container px-5">
-                <a class="navbar-brand" href="{% url 'inicio' %}">Coder App</a>
+                <a class="navbar-brand" href="{% url 'inicio' %}"><img style="width: 72px;" src="{% static 'assets/cineya.png' %}" alt=""></a>
+                <!-- <a class="navbar-brand" href="{% url 'inicio' %}">CineYa!</a> -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'inicio' %}">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'peliculas' %}">Peliculas</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'asientos' %}">Asientos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'formulario_peliculas' %}">Formulario Peliculas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'formulario_butacas' %}">Formulario Asientos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'formulario_personas' %}">Formulario Personas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'busqueda_pelicula' %}">Buscar Pelicula</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
                         
+                        {% if user.is_authenticated %}
+                            <img style="height: 40px;" src="{{url}}" alt="">
+                            <!-- <i class="bi bi-person-circle"></i> -->
+                            <li class="nav-item"><p class="text-light my-2"> Hola,<b>{{user.username}}</b>!</p></li>
+                            <li class="nav-item"><a class="btn btn-primary mx-2" href="{% url 'logout' %}">Cerrar Sesion</a></li>
+                        {% else %}
+                            <li class="nav-item"><a class="btn btn-primary mx-2" href="{% url 'login' %}">Iniciar Sesion</a></li>
+                            <li class="nav-item"><a class="btn btn-outline-primary" href="{% url 'register' %}">Registrate</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

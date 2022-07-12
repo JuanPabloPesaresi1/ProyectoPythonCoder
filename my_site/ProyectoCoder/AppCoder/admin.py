@@ -25,3 +25,5 @@ class ButacasAdmin(admin.ModelAdmin):
 admin.site.register(Butacas,ButacasAdmin)
 
 # admin, admin -> python manage.py createsuperuser
+
+admin.site.register(Avatar)

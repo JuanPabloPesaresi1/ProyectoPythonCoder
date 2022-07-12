@@ -44,7 +44,7 @@ Formulario de Peliculas
     <form style="text-align: center;width:100%;" action="" method="post">
         {% csrf_token %}
 
-        <p>Pelicula <input type="text" name="nombrePelicula" max_length="40" ></p>
+        <p>Pelicula <input type="text" name="nombrePelicula" max_length="40" required minlength="3" placeholder="Minimo 3 letras"  ></p>
 
         <p>Genero 
             <select name="genero">
@@ -58,7 +58,7 @@ Formulario de Peliculas
             </select>
         </p>
         <p> Lanzam
-            <select name="anioDeLanzamiento">
+            <select name="anioDeLanzamiento" >
                 <option>2017</option>
                 <option>2018</option>
                 <option>2019</option>
